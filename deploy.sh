@@ -28,7 +28,7 @@ PUBLIC_IP=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID --query "Rese
 echo "🌐 EC2 Public IP: $PUBLIC_IP"
 
 # 4️⃣ Copy scraper script to EC2
-scp -i $KEY_FILE -o StrictHostKeyChecking=no scripts/scraper.py ec2-user@$PUBLIC_IP:/home/ec2-user/scraper.py
+scp -i $KEY_FILE -o StrictHostKeyChecking=no scrap/scraper.py ec2-user@$PUBLIC_IP:/home/ec2-user/scraper.py
 
 # 5️⃣ Run scraper on EC2
 ssh -i $KEY_FILE -o StrictHostKeyChecking=no ec2-user@$PUBLIC_IP << EOF
